@@ -19,16 +19,17 @@ async function fetchWebsite(content: string) {
 }
 
 async function fetchOgInformation(webpage: string) : Promise<OgInformation> {
+    let getMetaTagContent = (property: string) => {
+        const metaTag = htmlHead.querySelector(`meta[property='og:${property}']`)
+        return metaTag ? metaTag.getAttribute("content") : null
+    }
+
     const parser = new DOMParser();
     const htmlHead = parser.parseFromString(webpage, "text/html").head
 
-    const metaTag3 = htmlHead.querySelector(`meta[property='og:url']`)
-    const metaTag2 = htmlHead.querySelector(`meta[property='og:title']`)
-    const metaTag = htmlHead.querySelector(`meta[property='og:image']`)
-
-    const ogUrl = metaTag3 ? metaTag3.getAttribute("content") : null
-    const ogImage = metaTag ? metaTag.getAttribute("content") : null
-    const ogTitle = metaTag2 ? metaTag2.getAttribute("content") : null
+    const ogTitle = getMetaTagContent("title")
+    const ogUrl = getMetaTagContent("url")
+    const ogImage = getMetaTagContent("image")
 
     if(ogImage == null || ogTitle == null || ogUrl == null ) {
         errorHandler( "Could not grab image, title or url." )
