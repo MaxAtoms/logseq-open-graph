@@ -10,7 +10,7 @@
     "dev": "parcel ./src/index.html --public-url ./",
     "build": "parcel build --public-url . --no-source-maps ./src/index.html"
   },
-  "author": "Max Atoms",
+  "author": "MaxAtoms",
   "license": "MIT",
   "dependencies": {
     "@logseq/libs": "^0.0.14"
