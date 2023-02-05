@@ -7,8 +7,8 @@
   },
   "description": "A plugin for Logseq which adds a slash command for capturing Open Graph information from a URL.",
   "scripts": {
-    "dev": "parcel ./index.html --public-url ./",
-    "build": "parcel build --public-url . --no-source-maps index.html"
+    "dev": "parcel ./src/index.html --public-url ./",
+    "build": "parcel build --public-url . --no-source-maps ./src/index.html"
   },
   "author": "Max Atoms",
   "license": "MIT",
